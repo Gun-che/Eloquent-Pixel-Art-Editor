@@ -1,0 +1,16 @@
+{
+  "name": "pixel-art-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "http-server dist"
+  },
+  "author": "Ivan Goncharov",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-loader": "^8.0.2",
+    "typescript": "^4.0.2"
+  }
+}
