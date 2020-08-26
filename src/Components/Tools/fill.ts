@@ -1,6 +1,7 @@
+import { IState, IDispatch, IPos } from './../../ts/index';
 import { around } from "../../consts";
 
-export const fill = ({ x, y }, state, dispatch) => {
+export const fill = ({ x, y }: IPos, state: IState, dispatch: IDispatch) => {
   let targetColor = state.picture.pixel(x, y);
   let drawn = [{ x, y, color: state.color }];
 

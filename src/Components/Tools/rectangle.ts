@@ -1,6 +1,7 @@
+import { IPos, IState, IDispatch } from './../../ts/index';
 
-export const rectangle = (start, state, dispatch) => {
-  function drawRectangle(pos) {
+export const rectangle = (start: IPos, state: IState, dispatch: IDispatch) => {
+  function drawRectangle(pos: IPos) {
     let xStart = Math.min(start.x, pos.x);
     let yStart = Math.min(start.y, pos.y);
     let xEnd = Math.max(start.x, pos.x);

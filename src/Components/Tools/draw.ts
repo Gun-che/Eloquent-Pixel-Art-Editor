@@ -1,6 +1,7 @@
+import { IState, IPos, IDispatch } from './../../ts/index';
 
-export const draw = (pos, state, dispatch) => {
-  function drawPixel({ x, y }: { x: number, y: number }, state) {
+export const draw = (pos: IPos, state: IState, dispatch: IDispatch) => {
+  function drawPixel({ x, y }: IPos, state: IState) {
     let drawn = { x, y, color: state.color };
     dispatch({ picture: state.picture.draw([drawn]) });
   }

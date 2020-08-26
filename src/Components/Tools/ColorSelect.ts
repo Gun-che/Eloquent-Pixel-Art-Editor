@@ -1,9 +1,10 @@
+import { IState, IDispatch } from './../../ts/index';
 import { elt } from './../../utils/elt';
 
 export class ColorSelect {
   input: HTMLInputElement;
   dom: HTMLElement;
-  constructor(state, { dispatch }) {
+  constructor(state: IState, { dispatch }) {
     this.input = (elt('input', {
       type: 'color',
       value: state.color,
@@ -12,7 +13,7 @@ export class ColorSelect {
     this.dom = elt('label', null, '🎨 Цвет:', this.input)
   }
 
-  syncState(state) {
+  syncState(state: IState): void {
     this.input.value = state.color;
   }
 }

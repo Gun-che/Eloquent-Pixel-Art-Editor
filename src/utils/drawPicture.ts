@@ -1,5 +1,4 @@
-import { scale } from '../consts';
-import { Picture } from "../state/Picture"
+import { Picture } from "../Components/Picture"
 
 export const drawPicture = (picture: Picture, canvas: HTMLCanvasElement, scale: number) => {
   canvas.width = picture.width * scale;

@@ -1,13 +1,14 @@
-import { scale } from '../../../Game/src/consts';
+import { scale } from './../consts';
+import { IPos } from './../ts/index';
 import { elt } from '../utils/elt';
-import { Picture } from '../state/Picture';
+import { Picture } from './Picture';
 import { drawPicture } from '../utils/drawPicture';
 
 export class PictureCanvas {
   dom: HTMLCanvasElement;
   picture: Picture;
 
-  constructor(picture: Picture, pointerDown) {
+  constructor(picture: Picture, pointerDown: (pos: IPos) => void) {
     this.dom = (elt('canvas', {
       onmousedown: (e: MouseEvent) => this.mouse(e, pointerDown),
       ontouchstart: (e: TouchEvent) => this.touch(e, pointerDown)
@@ -22,7 +23,7 @@ export class PictureCanvas {
     drawPicture(this.picture, this.dom, scale);
   }
 
-  mouse(downEvent: MouseEvent, onDown) {
+  mouse(downEvent: MouseEvent, onDown: (pos: IPos) => any) {
 
     if (downEvent.button !== 0) return;
 
@@ -51,7 +52,7 @@ export class PictureCanvas {
 
 
 
-  touch(startEvent: TouchEvent, onDown) {
+  touch(startEvent: TouchEvent, onDown: (pos: IPos) => any) {
     let pos = pointerPosition(startEvent.touches[0], this.dom);
     let onMove = onDown(pos);
     startEvent.preventDefault();
