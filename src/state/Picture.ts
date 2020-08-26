@@ -8,9 +8,9 @@ interface IPixel {
 export class Picture {
   width: number;
   height: number;
-  pixels: IPixel[]
+  pixels: (IPixel | string)[]
 
-  constructor(width: number, height: number, pixels: IPixel[]) {
+  constructor(width: number, height: number, pixels: (IPixel | string)[]) {
     this.width = width;
     this.height = height;
     this.pixels = pixels;
@@ -29,7 +29,7 @@ export class Picture {
     let copy = this.pixels.slice();
 
     for (let { x, y, color } of pixels) {
-      (copy as string[])[x + y * this.width] = color;
+      copy[x + y * this.width] = color;
 
     }
     return new Picture(this.width, this.height, copy);
