@@ -1,6 +1,7 @@
 import { IState, IConfig, IPos } from './../ts/index';
 import { elt } from '../utils/elt';
 import { PictureCanvas } from "./Canvas";
+import { keyDown } from '../utils/keyListener';
 
 export class PixelEditor {
   state: IState;
@@ -22,7 +23,9 @@ export class PixelEditor {
     this.controls = controls.map(
       Control => new Control(state, config)
     );
-    this.dom = elt('div', {}, this.canvas.dom, elt('br', {}), ...this.controls.reduce((a, c) => a.concat(' ', c.dom), []));
+    this.dom = elt('div', { tabIndex: 0 }, this.canvas.dom, elt('br', {}), ...this.controls.reduce((a, c) => a.concat(' ', c.dom), []));
+
+    this.dom.addEventListener('keydown', keyDown(config))
   }
 
   syncState(state: IState) {
