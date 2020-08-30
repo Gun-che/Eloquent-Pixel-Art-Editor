@@ -19,8 +19,8 @@ export class PictureCanvas {
 
   syncState(picture: Picture) {
     if (this.picture === picture) return;
+    drawPicture(picture, this.dom, scale, this.picture);
     this.picture = picture;
-    drawPicture(this.picture, this.dom, scale);
   }
 
   mouse(downEvent: MouseEvent, onDown: (pos: IPos) => any) {
