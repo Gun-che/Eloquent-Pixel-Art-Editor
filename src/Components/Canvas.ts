@@ -9,10 +9,10 @@ export class PictureCanvas {
   picture: Picture;
 
   constructor(picture: Picture, pointerDown: (pos: IPos) => void) {
-    this.dom = (elt('canvas', {
-      onmousedown: (e: MouseEvent) => this.mouse(e, pointerDown),
-      ontouchstart: (e: TouchEvent) => this.touch(e, pointerDown)
-    }) as HTMLCanvasElement);
+    this.dom = elt('canvas', {
+      onmousedown: (event: MouseEvent) => this.mouse(event, pointerDown),
+      ontouchstart: (event: TouchEvent) => this.touch(event, pointerDown)
+    }) as HTMLCanvasElement;
 
     this.syncState(picture);
   }
@@ -25,7 +25,7 @@ export class PictureCanvas {
 
   mouse(downEvent: MouseEvent, onDown: (pos: IPos) => any) {
 
-    if (downEvent.button !== 0) return;
+    if (downEvent.button != 0) return;
 
     let pos = pointerPosition(downEvent, this.dom);
     let onMove = onDown(pos);
@@ -34,19 +34,20 @@ export class PictureCanvas {
 
     let move = (moveEvent: MouseEvent) => {
 
-      if (moveEvent.button === 0) {
-        this.dom.removeEventListener('mousemove', move);
+      if (moveEvent.buttons == 0) {
+        this.dom.removeEventListener("mousemove", move);
 
       } else {
         let newPos = pointerPosition(moveEvent, this.dom);
 
-        if (newPos.x === pos.x && newPos.y === pos.y) return;
-
+        if (newPos.x == pos.x && newPos.y == pos.y) {
+          return;
+        }
         pos = newPos;
         onMove(newPos);
       }
     };
-    this.dom.addEventListener('mousemove', move);
+    this.dom.addEventListener("mousemove", move);
 
   };
 
@@ -80,8 +81,8 @@ export class PictureCanvas {
 
 function pointerPosition(pos: (MouseEvent | { clientX: number, clientY: number }), domNode: HTMLElement) {
   let rect = domNode.getBoundingClientRect();
-  return {
+  return ({
     x: Math.floor((pos.clientX - rect.left) / scale),
     y: Math.floor((pos.clientY - rect.top) / scale)
-  }
+  })
 }

@@ -7,7 +7,7 @@ export const drawPicture = (picture: Picture, canvas: HTMLCanvasElement, scale: 
 
   for (let y = 0; y < picture.height; y++) {
     for (let x = 0; x < picture.width; x++) {
-      cx.fillStyle = (picture.pixel(x, y) as string);
+      cx.fillStyle = picture.pixel(x, y);
       cx.fillRect(x * scale, y * scale, scale, scale);
     }
   }

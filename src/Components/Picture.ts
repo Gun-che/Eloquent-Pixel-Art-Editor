@@ -1,16 +1,11 @@
-
-interface IPixel {
-  x: number;
-  y: number;
-  color: string;
-}
+import { IPixel } from './../ts/index';
 
 export class Picture {
   width: number;
   height: number;
-  pixels: (IPixel | string)[]
+  pixels: string[]
 
-  constructor(width: number, height: number, pixels: (IPixel | string)[]) {
+  constructor(width: number, height: number, pixels: string[]) {
     this.width = width;
     this.height = height;
     this.pixels = pixels;

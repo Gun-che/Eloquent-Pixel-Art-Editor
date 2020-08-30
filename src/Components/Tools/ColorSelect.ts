@@ -1,10 +1,10 @@
-import { IState, IDispatch } from './../../ts/index';
+import { IState, IDispatch, IConfig } from './../../ts/index';
 import { elt } from './../../utils/elt';
 
 export class ColorSelect {
   input: HTMLInputElement;
   dom: HTMLElement;
-  constructor(state: IState, { dispatch }) {
+  constructor(state: IState, { dispatch }: IConfig) {
     this.input = (elt('input', {
       type: 'color',
       value: state.color,

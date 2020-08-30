@@ -1,7 +1,7 @@
-import { elt } from './../utils/elt';
-import { IState, IAction, IConfig } from './../ts/index';
+import { elt } from '../utils/elt';
+import { IState, IAction, IConfig } from '../ts/index';
 
-export const hystoryUpdateState = (state: IState, action: IAction) => {
+export const historyUpdateState = (state: IState, action: IAction) => {
 
 	if (action.undo === true) {
 

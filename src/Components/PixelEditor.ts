@@ -15,7 +15,9 @@ export class PixelEditor {
       let tool = tools[this.state.tool];
       let onMove = tool(pos, this.state, dispatch);
 
-      if (onMove) return (pos: IPos) => onMove(pos, this.state);
+      if (onMove) {
+        return (pos: IPos) => onMove(pos, this.state);
+      }
     });
     this.controls = controls.map(
       Control => new Control(state, config)
