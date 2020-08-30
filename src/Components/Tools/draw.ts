@@ -1,11 +1,14 @@
 import { IState, IPos, IDispatch } from './../../ts/index';
+import { drawLine } from './line';
 
 export const draw = (pos: IPos, state: IState, dispatch: IDispatch) => {
-  function drawPixel({ x, y }: IPos, state: IState) {
-    let drawn = { x, y, color: state.color };
-    dispatch({ picture: state.picture.draw([drawn]) });
+  function connect(newPos: IPos, state: IState) {
+    let line = drawLine(pos, newPos, state.color);
+    pos = newPos;
+    dispatch({ picture: state.picture.draw(line) });
   }
-  drawPixel(pos, state);
+  connect(pos, state);
 
-  return drawPixel;
+  return connect;
 }
+
