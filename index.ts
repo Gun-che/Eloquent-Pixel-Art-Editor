@@ -1,6 +1,8 @@
+import { IState } from './src/ts/index';
+import { line } from './src/Components/Tools/line';
+import { circle } from './src/Components/Tools/circle';
 import { UndoButton, historyUpdateState } from './src/history/index';
 import { LoadButton } from './src/SaveAndLoad/Load';
-import { updateState } from './src/state/updateState';
 import { ToolSelect } from './src/Components/Tools/ToolSelect';
 import { ColorSelect } from './src/Components/Tools/ColorSelect';
 import { pick } from './src/Components/Tools/pickColor';
@@ -20,7 +22,7 @@ let state = {
   doneAt: 0,
 };
 
-const baseTools = { draw, fill, rectangle, pick }
+const baseTools = { draw, fill, rectangle, pick, circle, line }
 
 const baseControls = [ToolSelect, ColorSelect, SaveButton, LoadButton, UndoButton];
 

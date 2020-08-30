@@ -14,5 +14,5 @@
     "downlevelIteration": true
   },
   "files": ["./index.ts"],
-  "include": ["src", "index.ts"]
+  "include": ["src", "index.ts", "dist/keyListener.ts"]
 }
